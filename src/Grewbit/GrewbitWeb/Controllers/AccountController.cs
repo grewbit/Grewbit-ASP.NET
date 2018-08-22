@@ -91,7 +91,7 @@ namespace GrewbitWeb.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Member");
                 case SignInStatus.Failure:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(viewModel);
