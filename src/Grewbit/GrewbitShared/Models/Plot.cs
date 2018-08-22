@@ -12,6 +12,9 @@ namespace GrewbitShared.Models
         public int Id { get; set; }
 
         [Required]
+        public string UserId { get; set; }
+
+        [Required]
         public string Name { get; set; }
 
         [Required]
@@ -22,6 +25,8 @@ namespace GrewbitShared.Models
 
         [Required]
         public double Longitude { get; set; }
+
+        public User User { get; set; }
 
         public string Coordinat
         {

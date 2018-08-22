@@ -2,6 +2,8 @@
 
 @Html.AntiForgeryToken()
 
+@Html.HiddenFor(m => m.UserId)
+
 <div class="fields">
     <div class="field">
         @Html.LabelFor(m => m.Name)

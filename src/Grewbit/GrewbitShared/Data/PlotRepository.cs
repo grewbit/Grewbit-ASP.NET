@@ -13,14 +13,26 @@ namespace GrewbitShared.Data
         {
         }
 
-        public Plot Get(int id)
+        public Plot Get(int id, string userId)
         {
-            return Context.Plots.SingleOrDefault(p => p.Id == id);
+            return Context.Plots
+                .Where(p => p.Id == id && p.UserId == userId)
+                .SingleOrDefault();
         }
 
-        public IList<Plot> GetList()
+        public IList<Plot> GetList(string userId)
         {
-            return Context.Plots.OrderBy(p => p.Id).ToList();
+            return Context.Plots
+                .Where(p => p.UserId == userId)
+                .OrderBy(p => p.Id)
+                .ToList();
+        }
+
+        public bool PlotOwnedByUserId(int id, string userId)
+        {
+            return Context.Plots
+                .Where(p => p.Id == id && p.UserId == userId)
+                .Count() == 1;
         }
     }
 }
