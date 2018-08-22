@@ -2,9 +2,9 @@
     <div class="item">
         <img class="ui mini image" src="~/Content/Images/logo.png">
     </div>
-    <a class="item">Dashboard</a>
+    @Html.ActionLink("Dashboard", "Index", "Member", null, new { @class = "item" })
     <a class="item">Profile</a>
-    <a class="item">Plots</a>
+    @Html.ActionLink("Plot", "Index", "Plot", null, new { @class = "item" })
     <div class="item">
         @using (Html.BeginForm("SignOut", "Account", FormMethod.Post))
         {

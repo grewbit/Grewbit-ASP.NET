@@ -7,7 +7,11 @@
 @Html.Partial("_SideNav")
 
 <main class="content">
-    <h1 class="ui header">Dashboard</h1>
-    <p>Hai, @User.Identity.GetUserName()!</p>
+    <div class="ui grid container">
+        <div class="column">
+            <h1 class="ui header">Dashboard</h1>
+            <p>Hai, @User.Identity.GetUserName()!</p>
+        </div>
+    </div>
 </main>
 

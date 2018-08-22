@@ -1,0 +1,68 @@
+﻿@model GrewbitShared.Models.Plot
+
+@{
+    ViewBag.Title = "Add Plot";
+}
+
+@Html.Partial("_SideNav")
+
+<main class="content">
+    <div class="ui grid container">
+        <div class="column">
+            <h1 class="ui header">
+                Plot
+                <p class="sub header">Manage your registered plots.</p>
+            </h1>
+
+            <div class="ui compact menu">
+                <a class="item" href="@Url.Action("Index")">
+                    <i class="list icon"></i>
+                    List Plot
+                </a>
+            </div>
+
+            <h3 class="ui header">Add Plot</h3>
+
+            @using (Html.BeginForm("Add", "Plot", FormMethod.Post, new { @class = "ui equal width form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="fields">
+                    <div class="field">
+                        @Html.LabelFor(m => m.Name)
+                        @Html.TextBoxFor(m => m.Name, new { placeholder = "Plot name" })
+                    </div>
+
+                    <div class="field">
+                        @Html.LabelFor(m => m.Area)
+                        @Html.TextBoxFor(m => m.Area, new { placeholder = "Plot area" })
+                    </div>
+                </div>
+
+                <div class="fields">
+                    <div class="field">
+                        @Html.LabelFor(m => m.Latitude)
+                        @Html.TextBoxFor(m => m.Latitude, new { placeholder = "Plot latitude" })
+                    </div>
+
+                    <div class="field">
+                        @Html.LabelFor(m => m.Longitude)
+                        @Html.TextBoxFor(m => m.Longitude, new { placeholder = "Plot longitude" })
+                    </div>
+                </div>
+
+                if (!ViewData.ModelState.IsValid)
+                {
+                    @Html.ValidationSummary("There were some errors")
+                }
+
+                <button type="submit" class="ui teal button">
+                    <i class="save icon"></i>
+                    Save
+                </button>
+            }
+        </div>
+    </div>
+</main>
+
+
