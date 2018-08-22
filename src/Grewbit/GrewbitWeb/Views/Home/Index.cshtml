@@ -1,0 +1,16 @@
+﻿@using Microsoft.AspNet.Identity
+
+<h1>Homepage</h1>
+
+
+@if (Request.IsAuthenticated)
+{
+    <h3>Hello, @User.Identity.GetUserName()!</h3>
+
+    using (Html.BeginForm("SignOut", "Account", FormMethod.Post, new { @class = "ui form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <button type="submit" class="ui teal button">Sign Out</button>
+    }
+}

@@ -1,0 +1,44 @@
+﻿@model GrewbitWeb.ViewModels.AccountSignInViewModel
+
+@{
+    ViewBag.Title = "Sign In";
+}
+
+<div class="h--float-box">
+    <img src="~/Content/Images/logo.png" alt="Grewbit logo" class="ui mini centered image" />
+    <h2 class="ui header centered">
+        Welcome back!
+    </h2>
+
+    @using (Html.BeginForm("SignIn", "Account", FormMethod.Post, new { @class = "ui form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="field">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { placeholder = "Your email address" })
+        </div>
+
+        <div class="field">
+            @Html.LabelFor(m => m.Password)
+            @Html.TextBoxFor(m => m.Password, new { placeholder = "Type your password", type = "password" })
+        </div>
+
+        <div class="inline field">
+            <div class="ui checkbox">
+                @Html.CheckBoxFor(m => m.RememberMe)
+                <label>@Html.DisplayNameFor(m => m.RememberMe)</label>
+            </div>
+        </div>
+
+        if (!ViewData.ModelState.IsValid)
+        {
+            @Html.ValidationSummary("There were some errors")
+        }
+
+        <button class="ui teal button" type="submit">Sign In</button>
+    }
+
+    <p style="margin-top: 30px;">Don't have an account? @Html.ActionLink("Sign up here", "SignUp") instead.</p>
+</div>
+
