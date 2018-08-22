@@ -58,7 +58,7 @@ namespace GrewbitWeb.Controllers
                     {
                         await _signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Member");
                     }
 
                     foreach (var error in result.Errors)
@@ -91,7 +91,7 @@ namespace GrewbitWeb.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Member");
                 case SignInStatus.Failure:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(viewModel);

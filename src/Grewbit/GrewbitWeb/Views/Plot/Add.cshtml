@@ -1,0 +1,35 @@
+﻿@model GrewbitShared.Models.Plot
+
+@{
+    ViewBag.Title = "Add Plot";
+}
+
+@Html.Partial("_SideNav")
+
+<main class="content">
+    <div class="ui grid container">
+        <div class="column">
+            <h1 class="ui header">
+                Plot
+                <p class="sub header">Manage your registered plots.</p>
+            </h1>
+
+            @Html.Partial("~/Views/Plot/_Menu.cshtml")
+
+            <h3 class="ui header">Add Plot</h3>
+
+            @using (Html.BeginForm("Add", "Plot", FormMethod.Post, new { @class = "ui equal width form" }))
+            {
+                
+                @Html.Partial("~/Views/Plot/_Form.cshtml")
+
+                <button type="submit" class="ui teal button">
+                    <i class="save icon"></i>
+                    Save
+                </button>
+            }
+        </div>
+    </div>
+</main>
+
+

@@ -1,0 +1,53 @@
+﻿@model IList<GrewbitShared.Models.Plot>
+
+@{
+    ViewBag.Title = "Plot";
+}
+
+@Html.Partial("_SideNav")
+
+<main class="content">
+    <div class="ui grid container">
+        <div class="column">
+            <h1 class="ui header">
+                Plot
+                <p class="sub header">Manage your registered plots.</p>
+            </h1>
+
+            @Html.Partial("~/Views/Plot/_Menu.cshtml")
+
+            @if (TempData["Message"] != null)
+            {
+                <div class="ui success message">
+                    <p>@TempData["Message"]</p>
+                </div>
+            }
+
+            <table class="ui celled table">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th>Area (m<sup>2</sup>)</th>
+                        <th>Coordinat (Lat, Long)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ int i = 1; }
+                    @foreach (var plot in Model)
+                    {
+                        <tr>
+                            <td>@i</td>
+                            <td>@Html.ActionLink(plot.Name, "Detail", new { id = plot.Id })</td>
+                            <td>@plot.Area</td>
+                            <td>@plot.Coordinat</td>
+                        </tr>
+                        i++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+

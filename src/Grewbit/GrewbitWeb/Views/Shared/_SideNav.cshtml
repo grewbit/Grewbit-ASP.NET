@@ -1,0 +1,16 @@
+﻿<div class="ui left fixed vertical menu">
+    <div class="item">
+        <img class="ui mini image" src="~/Content/Images/logo.png">
+    </div>
+    @Html.ActionLink("Dashboard", "Index", "Member", null, new { @class = "item" })
+    <a class="item">Profile</a>
+    @Html.ActionLink("Plot", "Index", "Plot", null, new { @class = "item" })
+    <div class="item">
+        @using (Html.BeginForm("SignOut", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <button type="submit" class="ui button">Sign Out</button>
+        }
+    </div>
+</div>

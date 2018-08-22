@@ -1,0 +1,34 @@
+﻿@model GrewbitShared.Models.Plot
+
+@Html.AntiForgeryToken()
+
+@Html.HiddenFor(m => m.UserId)
+
+<div class="fields">
+    <div class="field">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { placeholder = "Plot name" })
+    </div>
+
+    <div class="field">
+        @Html.LabelFor(m => m.Area)
+        @Html.TextBoxFor(m => m.Area, new { placeholder = "Plot area" })
+    </div>
+</div>
+
+<div class="fields">
+    <div class="field">
+        @Html.LabelFor(m => m.Latitude)
+        @Html.TextBoxFor(m => m.Latitude, new { placeholder = "Plot latitude" })
+    </div>
+
+    <div class="field">
+        @Html.LabelFor(m => m.Longitude)
+        @Html.TextBoxFor(m => m.Longitude, new { placeholder = "Plot longitude" })
+    </div>
+</div>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    @Html.ValidationSummary("There were some errors")
+}

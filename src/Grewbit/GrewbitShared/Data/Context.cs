@@ -12,6 +12,8 @@ namespace GrewbitShared.Data
 {
     public class Context : IdentityDbContext<User>
     {
+        public DbSet<Plot> Plots { get; set; }
+
         public Context() : base("Context")
         {}
 

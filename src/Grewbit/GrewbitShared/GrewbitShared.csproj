@@ -74,7 +74,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\BaseRepository.cs" />
     <Compile Include="Data\Context.cs" />
+    <Compile Include="Data\PlotRepository.cs" />
+    <Compile Include="Models\Plot.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\ApplicationSignInManager.cs" />

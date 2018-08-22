@@ -6,12 +6,11 @@ using System.Web.Mvc;
 
 namespace GrewbitWeb.Controllers
 {
-    public class HomeController : Controller
+    public class MemberController : Controller
     {
-        [AllowAnonymous]
         public ActionResult Index()
         {
-            return RedirectToAction("SignIn", "Account");
+            return View();
         }
     }
 }
