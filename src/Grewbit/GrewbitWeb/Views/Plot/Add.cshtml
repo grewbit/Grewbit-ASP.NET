@@ -14,12 +14,7 @@
                 <p class="sub header">Manage your registered plots.</p>
             </h1>
 
-            <div class="ui compact menu">
-                <a class="item" href="@Url.Action("Index")">
-                    <i class="list icon"></i>
-                    List Plot
-                </a>
-            </div>
+            @Html.Partial("~/Views/Plot/_Menu.cshtml")
 
             <h3 class="ui header">Add Plot</h3>
 

@@ -14,12 +14,7 @@
                 <p class="sub header">Manage your registered plots.</p>
             </h1>
 
-            <div class="ui compact menu">
-                <a class="item" href="@Url.Action("Add")">
-                    <i class="add icon"></i>
-                    Add Plot
-                </a>
-            </div>
+            @Html.Partial("~/Views/Plot/_Menu.cshtml")
 
             @if (TempData["Message"] != null)
             {
@@ -43,7 +38,7 @@
                     {
                         <tr>
                             <td>@i</td>
-                            <td>@plot.Name</td>
+                            <td>@Html.ActionLink(plot.Name, "Detail", new { id = plot.Id })</td>
                             <td>@plot.Area</td>
                             <td>@plot.Coordinat</td>
                         </tr>

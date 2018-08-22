@@ -334,6 +334,8 @@
     <Content Include="Views\Shared\_SideNav.cshtml" />
     <Content Include="Views\Plot\Index.cshtml" />
     <Content Include="Views\Plot\Add.cshtml" />
+    <Content Include="Views\Plot\Detail.cshtml" />
+    <Content Include="Views\Plot\_Menu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

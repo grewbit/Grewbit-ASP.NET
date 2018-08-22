@@ -1,0 +1,73 @@
+﻿@model GrewbitShared.Models.Plot
+
+@{
+    ViewBag.Title = "Plot Detail";
+}
+
+@Html.Partial("_SideNav")
+
+<main class="content">
+    <div class="ui grid container">
+        <div class="column">
+            <h1 class="ui header">
+                Plot
+                <p class="sub header">Manage your registered plots.</p>
+            </h1>
+
+            @Html.Partial("~/Views/Plot/_Menu.cshtml")
+
+            <h3 class="ui header">Plot Detail</h3>
+
+            <div class="ui two column grid">
+                <div class="column">
+                    <div class="ui two row column grid">
+                        <div class="three wide column"><strong>Name</strong></div>
+                        <div class="two wide column">@Model.Name</div>
+                    </div>
+                    <div class="ui two row column grid">
+                        <div class="three wide column"><strong>Area (m<sup>2</sup>)</strong></div>
+                        <div class="two wide column">@Model.Area</div>
+                    </div>
+                    <div class="ui two row column grid">
+                        <div class="three wide column"><strong>Latitude</strong></div>
+                        <div class="two wide column">@Model.Latitude</div>
+                    </div>
+                    <div class="ui two row column grid">
+                        <div class="three wide column"><strong>Longitude</strong></div>
+                        <div class="two wide column">@Model.Longitude</div>
+                    </div>
+
+                    <p></p>
+
+                    <div class="ui compact menu">
+                        <a class="item">
+                            <i class="edit icon"></i>
+                            Edit
+                        </a>
+                    </div>
+
+                    <div class="ui negative message">
+                        <div class="header">
+                            Delete Plot
+                        </div>
+                        <p>Please confirm the plot before you click the button.</p>
+
+                        @using (Html.BeginForm("Delete", "Plot", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            
+                            <button type="submit" class="ui red button">
+                                <i class="ui trash icon"></i>
+                                Delete
+                            </button>
+                        }
+                    </div>
+
+                </div>
+                <div class="column">Map goes here</div>
+            </div>
+        </div>
+    </div>
+</main>
+
+

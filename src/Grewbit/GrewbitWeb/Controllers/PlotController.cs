@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using GrewbitShared.Data;
@@ -40,6 +41,23 @@ namespace GrewbitWeb.Controllers
                 TempData["Message"] = "Plot was successfully added!";
 
                 return RedirectToAction("Index");
+            }
+
+            return View(plot);
+        }
+
+        public ActionResult Detail(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Plot plot = _plotRepository.Get(id.Value);
+
+            if (plot == null)
+            {
+                return HttpNotFound();
             }
 
             return View(plot);

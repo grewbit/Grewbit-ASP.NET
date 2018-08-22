@@ -13,6 +13,11 @@ namespace GrewbitShared.Data
         {
         }
 
+        public Plot Get(int id)
+        {
+            return Context.Plots.SingleOrDefault(p => p.Id == id);
+        }
+
         public IList<Plot> GetList()
         {
             return Context.Plots.OrderBy(p => p.Id).ToList();
