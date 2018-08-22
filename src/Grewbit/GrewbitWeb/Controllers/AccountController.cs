@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GrewbitWeb.ViewModels;
+using GrewbitShared.Models;
 
 namespace GrewbitWeb.Controllers
 {
@@ -17,6 +18,10 @@ namespace GrewbitWeb.Controllers
         [HttpPost]
         public ActionResult SignUp(AccountSignUpViewModel viewModel)
         {
+            if (ModelState.IsValid)
+            {
+                var user = new User { UserName = viewModel.Email, Email = viewModel.Email };
+            }
             return View(viewModel);
         }
     }
