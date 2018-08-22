@@ -8,6 +8,8 @@ using GrewbitShared.Models;
 using GrewbitShared.Security;
 using Microsoft.Owin.Security;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity;
 
 namespace GrewbitWeb.Controllers
 {
@@ -63,6 +65,43 @@ namespace GrewbitWeb.Controllers
                 }
             }
             return View(viewModel);
+        }
+
+        public ActionResult SignIn()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> SignIn(AccountSignInViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            var result = await _signInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.RememberMe, shouldLockout: false);
+
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    return RedirectToAction("Index", "Home");
+                case SignInStatus.Failure:
+                    ModelState.AddModelError("", "Invalid login attempt.");
+                    return View(viewModel);
+                case SignInStatus.LockedOut:
+                case SignInStatus.RequiresVerification:
+                    throw new NotImplementedException("Identity feature not implemented.");
+                default:
+                    throw new Exception("Unexpected Microsoft.AspNet.Identity.Owin.SignInStatus enum value: " + result);
+            }
+        }
+
+        public ActionResult SignOut()
+        {
+            _authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+
+            return RedirectToAction("SignIn");
         }
     }
 }

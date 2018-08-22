@@ -4,7 +4,7 @@
     ViewBag.Title = "Sign Up";
 }
 
-<div class="signup">
+<div class="h--float-box">
     <img src="~/Content/Images/logo.png" alt="Grewbit logo" class="ui mini centered image" />
     <h2 class="ui header centered">
         Let's sign you up!
@@ -40,6 +40,6 @@
         <button class="ui teal button" type="submit">Sign Up</button>
     }
 
-    <p style="margin-top: 30px;">Already signed up? <a href="#">Login here</a> instead.</p>
+    <p style="margin-top: 30px;">Already signed up? @Html.ActionLink("Login here", "SignIn") instead.</p>
 </div>
 

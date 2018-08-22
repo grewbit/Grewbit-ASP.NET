@@ -4,7 +4,7 @@
     background: linear-gradient(to right, #4ca2cd, #67B26F); 
 }*/
 
-.signup {
+.h--float-box {
     box-shadow: rgba(0,0,0,0.2) 3px 3px 20px, rgba(0,0,0,0.2) -3px 0px 20px;
     margin: 50px auto;
     max-width: 400px;
