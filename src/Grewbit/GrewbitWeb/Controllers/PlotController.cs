@@ -62,5 +62,49 @@ namespace GrewbitWeb.Controllers
 
             return View(plot);
         }
+
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Plot plot = _plotRepository.Get(id.Value);
+
+            if (plot == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(plot);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Plot plot)
+        {
+            if (ModelState.IsValid)
+            {
+                _plotRepository.Update(plot);
+
+                TempData["Message"] = "Plot was successfully updated!";
+
+                return RedirectToAction("Detail", new { id = plot.Id});
+            }
+
+            return View(plot);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int? id)
+        {
+            _plotRepository.Delete(id.Value);
+
+            TempData["Message"] = "Plot was successfully deleted!";
+
+            return RedirectToAction("Index");
+        }
     }
 }

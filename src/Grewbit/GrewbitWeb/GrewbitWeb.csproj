@@ -336,6 +336,8 @@
     <Content Include="Views\Plot\Add.cshtml" />
     <Content Include="Views\Plot\Detail.cshtml" />
     <Content Include="Views\Plot\_Menu.cshtml" />
+    <Content Include="Views\Plot\Edit.cshtml" />
+    <Content Include="Views\Plot\_Form.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

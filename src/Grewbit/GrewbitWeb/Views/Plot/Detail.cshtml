@@ -16,31 +16,38 @@
 
             @Html.Partial("~/Views/Plot/_Menu.cshtml")
 
+            @if (TempData["Message"] != null)
+            {
+                <div class="ui success message">
+                    <p>@TempData["Message"]</p>
+                </div>
+            }
+
             <h3 class="ui header">Plot Detail</h3>
 
             <div class="ui two column grid">
                 <div class="column">
                     <div class="ui two row column grid">
                         <div class="three wide column"><strong>Name</strong></div>
-                        <div class="two wide column">@Model.Name</div>
+                        <div class="five wide column">@Model.Name</div>
                     </div>
                     <div class="ui two row column grid">
                         <div class="three wide column"><strong>Area (m<sup>2</sup>)</strong></div>
-                        <div class="two wide column">@Model.Area</div>
+                        <div class="five wide column">@Model.Area</div>
                     </div>
                     <div class="ui two row column grid">
                         <div class="three wide column"><strong>Latitude</strong></div>
-                        <div class="two wide column">@Model.Latitude</div>
+                        <div class="five wide column">@Model.Latitude</div>
                     </div>
                     <div class="ui two row column grid">
                         <div class="three wide column"><strong>Longitude</strong></div>
-                        <div class="two wide column">@Model.Longitude</div>
+                        <div class="five wide column">@Model.Longitude</div>
                     </div>
 
                     <p></p>
 
                     <div class="ui compact menu">
-                        <a class="item">
+                        <a class="item" href="@Url.Action("Edit", new { id = Model.Id })">
                             <i class="edit icon"></i>
                             Edit
                         </a>
@@ -52,10 +59,10 @@
                         </div>
                         <p>Please confirm the plot before you click the button.</p>
 
-                        @using (Html.BeginForm("Delete", "Plot", FormMethod.Post))
+                        @using (Html.BeginForm("Delete", "Plot", new { id = Model.Id }, FormMethod.Post, null))
                         {
                             @Html.AntiForgeryToken()
-                            
+
                             <button type="submit" class="ui red button">
                                 <i class="ui trash icon"></i>
                                 Delete
