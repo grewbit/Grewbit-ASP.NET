@@ -12,6 +12,8 @@
 
     @using (Html.BeginForm("SignIn", "Account", FormMethod.Post, new { @class = "ui form" }))
     {
+        @Html.AntiForgeryToken()
+
         <div class="field">
             @Html.LabelFor(m => m.Email)
             @Html.TextBoxFor(m => m.Email, new { placeholder = "Your email address" })

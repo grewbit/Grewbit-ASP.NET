@@ -29,12 +29,15 @@ namespace GrewbitWeb.Controllers
             _authenticationManager = authenticationManager;
         }
 
+        [AllowAnonymous]
         public ActionResult SignUp()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> SignUp(AccountSignUpViewModel viewModel)
         {
             if (ModelState.IsValid)
@@ -67,12 +70,15 @@ namespace GrewbitWeb.Controllers
             return View(viewModel);
         }
 
+        [AllowAnonymous]
         public ActionResult SignIn()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> SignIn(AccountSignInViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -97,6 +103,8 @@ namespace GrewbitWeb.Controllers
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SignOut()
         {
             _authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
