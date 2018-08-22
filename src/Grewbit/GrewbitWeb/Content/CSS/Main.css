@@ -16,6 +16,10 @@
     padding: 2rem 0;
 }
 
+#map {
+    height: 100%;
+}
+
 /* Style validation message */
 .validation-summary-errors {
     background-color: #fff6f6;

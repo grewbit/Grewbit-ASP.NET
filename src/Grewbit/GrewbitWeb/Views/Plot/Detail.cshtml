@@ -71,10 +71,30 @@
                     </div>
 
                 </div>
-                <div class="column">Map goes here</div>
+                <div class="column">
+                    <div id="map"></div>
+                </div>
             </div>
         </div>
     </div>
 </main>
+
+<script>
+    var map;
+    function initMap() {
+        // Location of the field
+        var location = { lat: @Model.Latitude, lng: @Model.Longitude};
+        // The map
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: location,
+            zoom: 12
+        });
+        // The marker
+        var marker = new google.maps.Marker({ position: location, map: map });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn1nMup3GDmeIne5fQV7WTxKsY7GjIDCk&callback=initMap"
+        async defer></script>
+
 
 
