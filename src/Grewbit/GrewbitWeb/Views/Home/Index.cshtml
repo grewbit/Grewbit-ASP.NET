@@ -4,3 +4,10 @@
 
 <h1>Homepage</h1>
 
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("SignOut", "Account", FormMethod.Post, new { @class = "ui form" }))
+    {
+        <button type="submit" class="ui teal button">Sign Out</button>
+    }
+}

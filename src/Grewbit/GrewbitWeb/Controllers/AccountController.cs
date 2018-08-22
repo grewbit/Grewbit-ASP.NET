@@ -37,20 +37,29 @@ namespace GrewbitWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = viewModel.Email, Email = viewModel.Email };
+                var existingUser = await _userManager.FindByEmailAsync(viewModel.Email);
 
-                var result = await _userManager.CreateAsync(user, viewModel.Password);
-
-                if (result.Succeeded)
+                if (existingUser != null)
                 {
-                    await _signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-                    return RedirectToAction("Index", "Home");
+                    ModelState.AddModelError("Email", "The provided email address has already been used.");
                 }
-
-                foreach (var error in result.Errors)
+                else
                 {
-                    ModelState.AddModelError("", error);
+                    var user = new User { UserName = viewModel.Email, Email = viewModel.Email };
+
+                    var result = await _userManager.CreateAsync(user, viewModel.Password);
+
+                    if (result.Succeeded)
+                    {
+                        await _signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error);
+                    }
                 }
             }
             return View(viewModel);

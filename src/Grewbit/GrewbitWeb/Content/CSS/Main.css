@@ -1,13 +1,11 @@
-﻿body {
-    background: #67B26F; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #4ca2cd, #67B26F); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #4ca2cd, #67B26F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
+﻿/*body {
+    background: #67B26F; 
+    background: -webkit-linear-gradient(to right, #4ca2cd, #67B26F); 
+    background: linear-gradient(to right, #4ca2cd, #67B26F); 
+}*/
 
 .signup {
-    background: rgba(255,255,255,0.9);
-    border-radius: 10px;
-    box-shadow: rgba(0,0,0,0.2) 0px 3px 20px;
+    box-shadow: rgba(0,0,0,0.2) 3px 3px 20px, rgba(0,0,0,0.2) -3px 0px 20px;
     margin: 50px auto;
     max-width: 400px;
     padding: 30px;
