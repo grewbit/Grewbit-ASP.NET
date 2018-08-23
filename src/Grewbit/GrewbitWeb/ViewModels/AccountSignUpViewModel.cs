@@ -8,8 +8,7 @@ namespace GrewbitWeb.ViewModels
 {
     public class AccountSignUpViewModel
     {
-        // Enable this later
-        //[Required]
+        [Required]
         [Display(Name = "Full Name")]
         public string FullName { get; set; }
 
