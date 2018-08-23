@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -45,6 +46,42 @@ namespace GrewbitWeb.Controllers
             }
 
             return View(userProfile);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UploadAvatar(string id, HttpPostedFileBase Avatar)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    if (Avatar != null)
+                    {
+                        string path = Path.Combine(Server.MapPath("~/UserPhotos"), Path.GetFileName(Avatar.FileName));
+                        Avatar.SaveAs(path);
+
+                        var userProfile = _userProfileRepository.Get(id);
+                        userProfile.Avatar = Avatar.FileName;
+                        _userProfileRepository.Update(userProfile);
+
+                        TempData["Message"] = "Avatar was successfully updated!";
+
+                        return RedirectToAction("Index");
+                    }
+
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+
+                    TempData["Message"] = "Can't update avatar, try again!";
+
+                    return RedirectToAction("Index");
+                }
+            }
+
+            return View("Edit", _userProfileRepository.Get(id));
         }
     }
 }

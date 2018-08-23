@@ -26,6 +26,10 @@ namespace GrewbitShared.Models
         [StringLength(maximumLength: 255)]
         public string Address { get; set; }
 
+        [DataType(DataType.Upload)]
+        [Display(Name = "Upload Avatar")]
+        public string Avatar { get; set; }
+
         public User User { get; set; }
     }
 }

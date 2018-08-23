@@ -301,7 +301,9 @@
     <Content Include="Scripts\jQuery\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\Semantic-UI\semantic.js" />
     <Content Include="Scripts\Semantic-UI\semantic.min.js" />
-    <Content Include="UserPhotos\Samuel.png" />
+    <Content Include="UserPhotos\Default.png" />
+    <Content Include="UserPhotos\elliot.jpg" />
+    <Content Include="UserPhotos\matthew.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
