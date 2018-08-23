@@ -10,6 +10,7 @@ using Microsoft.Owin.Security;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity;
+using GrewbitShared.Data;
 
 namespace GrewbitWeb.Controllers
 {
@@ -18,15 +19,18 @@ namespace GrewbitWeb.Controllers
         private readonly ApplicationUserManager _userManager;
         private readonly ApplicationSignInManager _signInManager;
         private readonly IAuthenticationManager _authenticationManager;
+        private UserProfileRepository _userProfileRepository = null;
 
         public AccountController(
             ApplicationUserManager userManager,
             ApplicationSignInManager signInManager,
-            IAuthenticationManager authenticationManager)
+            IAuthenticationManager authenticationManager,
+            UserProfileRepository userProfileRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _authenticationManager = authenticationManager;
+            _userProfileRepository = userProfileRepository;
         }
 
         [AllowAnonymous]
@@ -56,6 +60,9 @@ namespace GrewbitWeb.Controllers
 
                     if (result.Succeeded)
                     {
+                        var userProfile = new UserProfile { FullName = viewModel.FullName, JoinDate = DateTime.Today, UserId = user.Id };
+                        _userProfileRepository.Add(userProfile);
+
                         await _signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                         return RedirectToAction("Index", "Member");

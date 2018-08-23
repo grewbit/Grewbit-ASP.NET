@@ -1,0 +1,66 @@
+﻿@model GrewbitShared.Models.UserProfile
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+@Html.Partial("_SideNav")
+
+<main class="content">
+    <div class="ui grid container">
+        <div class="column">
+            <h1 class="ui header">
+                Profile
+                <p class="sub header">See your full profile.</p>
+            </h1>
+
+            @if (TempData["Message"] != null)
+            {
+                <div class="ui success message">
+                    <p>@TempData["Message"]</p>
+                </div>
+            }
+
+            <div class="ui card">
+                <div class="image">
+                    @if (Model.Avatar == null)
+                    {
+                        <img src="~/UserPhotos/Default.png" class="ui small image" />
+                    }
+                    else
+                    {
+                        <img src="~/UserPhotos/@Model.Avatar" class="ui small image" />
+                    }
+                </div>
+                <div class="content">
+                    <a class="header">@Model.FullName</a>
+                    <div class="meta">
+                        <span class="date">@User.Identity.GetUserName()</span>
+                    </div>
+                    <div class="description">
+                        <p>
+                            <strong>Phone number</strong><br />
+                            @(Model.Phone == null ? "-" : Model.Phone)
+                        </p>
+                        <p>
+                            <strong>Address</strong><br />
+                            @(Model.Phone == null ? "-" : Model.Address)
+                        </p>
+                    </div>
+                </div>
+                <div class="extra content">
+                    <i class="calendar icon"></i>
+                    Joined in @Model.JoinDate.ToString("dd MMM yyyy")
+                </div>
+            </div>
+
+            <a href="@Url.Action("Edit")" class="ui teal button">
+                <i class="ui edit icon"></i>
+                Edit
+            </a>
+        </div>
+    </div>
+</main>
+
+

@@ -36,6 +36,7 @@ namespace GrewbitWeb.App_Start
         {
             container.Register<Context>(Lifestyle.Scoped);
             container.Register<PlotRepository>(Lifestyle.Scoped);
+            container.Register<UserProfile>(Lifestyle.Scoped);
 
             container.Register<ApplicationUserManager>(Lifestyle.Scoped);
             container.Register<ApplicationSignInManager>(Lifestyle.Scoped);
