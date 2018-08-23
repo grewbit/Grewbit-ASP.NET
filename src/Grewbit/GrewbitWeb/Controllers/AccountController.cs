@@ -60,7 +60,7 @@ namespace GrewbitWeb.Controllers
 
                     if (result.Succeeded)
                     {
-                        var userProfile = new UserProfile { FullName = viewModel.FullName, UserId = user.Id };
+                        var userProfile = new UserProfile { FullName = viewModel.FullName, JoinDate = DateTime.Today, UserId = user.Id };
                         _userProfileRepository.Add(userProfile);
 
                         await _signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);

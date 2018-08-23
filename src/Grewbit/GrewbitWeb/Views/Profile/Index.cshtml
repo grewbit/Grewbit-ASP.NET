@@ -1,0 +1,48 @@
+﻿@model GrewbitShared.Models.UserProfile
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+@Html.Partial("_SideNav")
+
+<main class="content">
+    <div class="ui grid container">
+        <div class="column">
+            <h1 class="ui header">
+                Profile
+                <p class="sub header">See your full profile.</p>
+            </h1>
+
+            <div class="ui card">
+                <div class="image">
+                    <img src="~/UserPhotos/Samuel.png">
+                </div>
+                <div class="content">
+                    <a class="header">@Model.FullName</a>
+                    <div class="meta">
+                        <span class="date">@User.Identity.GetUserName()</span>
+                    </div>
+                    <div class="description">
+                        <p>
+                            <strong>Phone number</strong><br />
+                            @(Model.Phone == null ? "-" : Model.Phone)
+                        </p>
+                        <p>
+                            <strong>Address</strong><br />
+                            @(Model.Phone == null ? "-" : Model.Address)
+                        </p>
+                    </div>
+                </div>
+                <div class="extra content">
+                    <a>
+                        <i class="calendar icon"></i>
+                        Joined in @Model.JoinDate.ToString("dd MMM yyyy")
+                    </a>
+                </div>
+            </div>
+    </div>
+</main>
+
+

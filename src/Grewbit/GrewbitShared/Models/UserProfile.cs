@@ -18,6 +18,8 @@ namespace GrewbitShared.Models
         [Display(Name = "Full Name")]
         public string FullName { get; set; }
 
+        public DateTime JoinDate { get; set; }
+
         [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
 
