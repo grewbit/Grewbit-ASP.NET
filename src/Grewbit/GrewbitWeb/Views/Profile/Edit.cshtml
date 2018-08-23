@@ -1,0 +1,59 @@
+﻿@model GrewbitShared.Models.UserProfile
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Edit Profile";
+}
+
+@Html.Partial("_SideNav")
+
+<main class="content">
+    <div class="ui grid container">
+        <div class="column">
+            <h1 class="ui header">
+                Profile
+                <p class="sub header">See your full profile.</p>
+            </h1>
+
+            <h3 class="ui header">Edit Your Profile</h3>
+            <div class="ui grid">
+                <div class="five wide column">
+                    @using (Html.BeginForm("Edit", "Profile", new { id = Model.Id }, FormMethod.Post, new { @class = "ui form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.UserId)
+                        @Html.HiddenFor(m => m.JoinDate)
+
+                        <div class="field">
+                            @Html.LabelFor(m => m.FullName)
+                            @Html.TextBoxFor(m => m.FullName)
+                        </div>
+
+                        <div class="field">
+                            @Html.LabelFor(m => m.Phone)
+                            @Html.TextBoxFor(m => m.Phone)
+                        </div>
+
+                        <div class="field">
+                            @Html.LabelFor(m => m.Address)
+                            @Html.TextAreaFor(m => m.Address)
+                        </div>
+
+                        if (!ViewData.ModelState.IsValid)
+                        {
+                            @Html.ValidationSummary("There were some errors")
+                        }
+
+                        <button type="submit" class="ui teal button">
+                            <i class="ui save icon"></i>
+                            Update
+                        </button>
+                        <a href="@Url.Action("Index")" class="ui button">Cancel</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+

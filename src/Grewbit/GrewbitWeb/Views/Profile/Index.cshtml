@@ -15,6 +15,13 @@
                 <p class="sub header">See your full profile.</p>
             </h1>
 
+            @if (TempData["Message"] != null)
+            {
+                <div class="ui success message">
+                    <p>@TempData["Message"]</p>
+                </div>
+            }
+
             <div class="ui card">
                 <div class="image">
                     <img src="~/UserPhotos/Samuel.png">
@@ -36,12 +43,16 @@
                     </div>
                 </div>
                 <div class="extra content">
-                    <a>
-                        <i class="calendar icon"></i>
-                        Joined in @Model.JoinDate.ToString("dd MMM yyyy")
-                    </a>
+                    <i class="calendar icon"></i>
+                    Joined in @Model.JoinDate.ToString("dd MMM yyyy")
                 </div>
             </div>
+
+            <a href="@Url.Action("Edit")" class="ui teal button">
+                <i class="ui edit icon"></i>
+                Edit
+            </a>
+        </div>
     </div>
 </main>
 

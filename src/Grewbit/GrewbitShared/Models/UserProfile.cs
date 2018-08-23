@@ -23,6 +23,7 @@ namespace GrewbitShared.Models
         [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
 
+        [StringLength(maximumLength: 255)]
         public string Address { get; set; }
 
         public User User { get; set; }
